@@ -25,7 +25,7 @@ function feedForward(inputs = [], target = 0, epochs = 1) {
     }
 
     let sumResult = sum(multiply);
-    let output = parseFloat(Math.tanh(sumResult)).toFixed(4);
+    let output = parseFloat(tanh(sumResult)).toFixed(4);
 
     let error = parseFloat(Math.abs(target - output)).toFixed(4);
     for (let j = 0; j < inputs.length; j++) {
@@ -37,4 +37,9 @@ function feedForward(inputs = [], target = 0, epochs = 1) {
   }
 }
 
-feedForward([0], 0.1, 400);
+// hyperbolic tangent
+function tanh(n = 0) {
+  return Math.sinh(n) / Math.cosh(n);
+}
+
+feedForward([0], 0.1, 800);
