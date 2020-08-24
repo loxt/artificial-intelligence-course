@@ -50,6 +50,7 @@ function feedForward(inputs = [], target = 0, epochs = 1, activation = 'sigmoid'
 
     let error = parseFloat(Math.abs(target - output)).toFixed(4);
     for (let j = 0; j < inputs.length; j++) {
+      if (inputs[j] <= 0) inputs[j] = 0.1;
       weights[j] += inputs[j] * gradientDescent(error);
     }
     let epoch = i.toString().padStart(7, '0');
