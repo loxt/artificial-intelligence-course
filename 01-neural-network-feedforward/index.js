@@ -25,7 +25,7 @@ function feedForward(inputs = [], target = 0, epochs = 1) {
     }
 
     let sumResult = sum(multiply);
-    let output = parseFloat(tanh(sumResult)).toFixed(4);
+    let output = parseFloat(relu(sumResult)).toFixed(4);
 
     let error = parseFloat(Math.abs(target - output)).toFixed(4);
     for (let j = 0; j < inputs.length; j++) {
@@ -46,6 +46,11 @@ function tanh(n = 0) {
 // function sigmoid(n = 0) {
 //   return 1 / (1 + Math.pow(Math.E, -n));
 // }
+
+// linear unity retificated
+function relu(n = 0) {
+  return Math.max(n, 0);
+}
 
 
 feedForward([0], 0.1, 800);
