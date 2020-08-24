@@ -6,7 +6,7 @@ function gradientDescent(n = 0) {
   return n * (1 - n);
 }
 
-function feedForward(inputs = [], target = 0, epochs = 1) {
+function feedForward(inputs = [], target = 0, epochs = 1, activation = 'sigmoid') {
   if (target <= 0) target = 0.1;
   else if (target > 1) target = 1;
 
@@ -25,7 +25,28 @@ function feedForward(inputs = [], target = 0, epochs = 1) {
     }
 
     let sumResult = sum(multiply);
-    let output = parseFloat(relu(sumResult)).toFixed(4);
+    let output = 0;
+
+    switch (activation) {
+      case 'tanh':
+        output = parseFloat(tanh(sumResult)).toFixed(4);
+        break;
+      case 'sigmoid':
+        output = parseFloat(sigmoid(sumResult)).toFixed(4);
+        break;
+      case 'relu':
+        output = parseFloat(relu(sumResult)).toFixed(4);
+        break;
+      case 'leakyRelu':
+        output = parseFloat(leakyRelu(sumResult)).toFixed(4);
+        break;
+      case 'binaryStep':
+        output = parseFloat(binaryStep(sumResult)).toFixed(4);
+        break;
+      default:
+        output = parseFloat(sigmoid(sumResult)).toFixed(4);
+        break;
+    }
 
     let error = parseFloat(Math.abs(target - output)).toFixed(4);
     for (let j = 0; j < inputs.length; j++) {
@@ -38,14 +59,14 @@ function feedForward(inputs = [], target = 0, epochs = 1) {
 }
 
 // hyperbolic tangent
-// function tanh(n = 0) {
-//   return Math.sinh(n) / Math.cosh(n);
-// }
+function tanh(n = 0) {
+  return Math.sinh(n) / Math.cosh(n);
+}
 
 // sigmoid function
-// function sigmoid(n = 0) {
-//   return 1 / (1 + Math.pow(Math.E, -n));
-// }
+function sigmoid(n = 0) {
+  return 1 / (1 + Math.pow(Math.E, -n));
+}
 
 // linear unity rectification
 function relu(n = 0) {
@@ -53,13 +74,13 @@ function relu(n = 0) {
 }
 
 // leaky linear unity rectification
-// function leakyRelu(n = 0) {
-//   return Math.max(n, 0.01);
-// }
+function leakyRelu(n = 0) {
+  return Math.max(n, 0.01);
+}
 
 // binary step
-// function binaryStep(n = 0) {
-//   return (n >= 0) ? 1 : 0;
-// }
+function binaryStep(n = 0) {
+  return (n >= 0) ? 1 : 0;
+}
 
-feedForward([0], 0.1, 800);
+feedForward([0], 0.1, 800, 'relu');
