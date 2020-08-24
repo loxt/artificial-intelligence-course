@@ -25,7 +25,7 @@ function feedForward(inputs = [], target = 0, epochs = 1) {
     }
 
     let sumResult = sum(multiply);
-    let output = parseFloat(leakyRelu(sumResult)).toFixed(4);
+    let output = parseFloat(relu(sumResult)).toFixed(4);
 
     let error = parseFloat(Math.abs(target - output)).toFixed(4);
     for (let j = 0; j < inputs.length; j++) {
@@ -38,9 +38,9 @@ function feedForward(inputs = [], target = 0, epochs = 1) {
 }
 
 // hyperbolic tangent
-function tanh(n = 0) {
-  return Math.sinh(n) / Math.cosh(n);
-}
+// function tanh(n = 0) {
+//   return Math.sinh(n) / Math.cosh(n);
+// }
 
 // sigmoid function
 // function sigmoid(n = 0) {
@@ -53,9 +53,13 @@ function relu(n = 0) {
 }
 
 // leaky linear unity rectification
-function leakyRelu(n = 0) {
-  return Math.max(n, 0.01);
-}
+// function leakyRelu(n = 0) {
+//   return Math.max(n, 0.01);
+// }
 
+// binary step
+// function binaryStep(n = 0) {
+//   return (n >= 0) ? 1 : 0;
+// }
 
 feedForward([0], 0.1, 800);
