@@ -42,4 +42,10 @@ function tanh(n = 0) {
   return Math.sinh(n) / Math.cosh(n);
 }
 
+// sigmoid function
+// function sigmoid(n = 0) {
+//   return 1 / (1 + Math.pow(Math.E, -n));
+// }
+
+
 feedForward([0], 0.1, 800);
