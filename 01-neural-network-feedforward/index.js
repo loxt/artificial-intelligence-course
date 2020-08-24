@@ -17,6 +17,22 @@ function feedForward(inputs = [], target = 0, epochs = 1) {
   }
 
   for (let i = 1; i <= epochs; i++) {
+    let multiply = [];
+
+    for (let j = 0; j < inputs.length; j++) {
+      if (inputs[j] <= 0) inputs[j] = 0.1;
+      multiply.push(inputs[j] * weights[j]);
+    }
+
+    let sumResult = sum(multiply);
+    let output = parseFloat(Math.tanh(sumResult)).toFixed(4);
+
+    let error = parseFloat(Math.abs(target - output)).toFixed(4);
+    for (let j = 0; j < inputs.length; j++) {
+      weights[j] += inputs[j] * gradientDescent(error);
+    }
+    let epoch = i.toString().padStart(7, '0');
     
+    console.log(`Época: ${epoch} - taxa de erro: ${error} - saída: ${output}`);
   }
 }
