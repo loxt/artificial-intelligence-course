@@ -25,7 +25,7 @@ function feedForward(inputs = [], target = 0, epochs = 1) {
     }
 
     let sumResult = sum(multiply);
-    let output = parseFloat(relu(sumResult)).toFixed(4);
+    let output = parseFloat(leakyRelu(sumResult)).toFixed(4);
 
     let error = parseFloat(Math.abs(target - output)).toFixed(4);
     for (let j = 0; j < inputs.length; j++) {
@@ -47,9 +47,14 @@ function tanh(n = 0) {
 //   return 1 / (1 + Math.pow(Math.E, -n));
 // }
 
-// linear unity retificated
+// linear unity rectification
 function relu(n = 0) {
   return Math.max(n, 0);
+}
+
+// leaky linear unity rectification
+function leakyRelu(n = 0) {
+  return Math.max(n, 0.01);
 }
 
 
