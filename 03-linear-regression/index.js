@@ -28,3 +28,13 @@ function summation(x = []) {
 function average(x = []) {
   return summation(x) / x.length;
 }
+
+function linearRegression(x = [], y = [], p) {
+  const result1 = (summation(x) * summation(y)) / x.length;
+  const result2 = (summation(x) * summation(x)) / x.length;
+  const result3 = summation(product(x, y)) - resultado1;
+  const result4 = result3 / (summation(square(x)) - result2);
+  const result5 = average(y) - (result4 * average(x)); 
+
+  return ((result4 * p) + result5).toFixed(0);
+}
