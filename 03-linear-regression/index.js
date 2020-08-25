@@ -25,4 +25,6 @@ function summation(x = []) {
   return temp;
 }
 
-summation([1, 2, 3]);
+function average(x = []) {
+  return summation(x) / x.length;
+}
