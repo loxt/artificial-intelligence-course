@@ -1,4 +1,4 @@
-function product(x, y) {
+function product(x = [], y = []) {
   let temp = [];
 
   for (let i = 0; i < x.length; i++)
@@ -7,7 +7,7 @@ function product(x, y) {
   return temp;
 }
 
-function square(x) {
+function square(x = []) {
   let temp = [];
 
   for (let i = 0; i < x.length; i++) 
@@ -15,3 +15,14 @@ function square(x) {
   
   return temp;
 }
+
+function summation(x = []) {
+  let temp = [];
+
+  for (let i = 0; i < x.length; i++)
+    temp += parseFloat(x[i]);
+
+  return temp;
+}
+
+summation([1, 2, 3]);
