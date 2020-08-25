@@ -6,3 +6,12 @@ function product(x, y) {
 
   return temp;
 }
+
+function square(x) {
+  let temp = [];
+
+  for (let i = 0; i < x.length; i++) 
+    temp.push(parseFloat(x[i]) * parseFloat(x[i]));
+  
+  return temp;
+}
