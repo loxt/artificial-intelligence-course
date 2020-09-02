@@ -52,7 +52,7 @@ function linearRegression(axisX = [], axisY = []) {
     let regressions = [];
 
     for (let i = 0; i < diff; i++) {
-      const temp = results(tempX, tempY, axisX[sizeY + i]);
+      const temp = Number(results(tempX, tempY, axisX[sizeY + i]));
       regressions.push(temp);
     }
 
