@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 module.exports = class LinearRegression {
   train(config = {}) {
     this._config = {};
@@ -6,6 +8,20 @@ module.exports = class LinearRegression {
 
     if (config.output) this.Y = config.output;
     else this.Y = [0];
+
+    this._config.input = this.X;
+    this._config.output = this.Y;
+  }
+
+  saveModel(path = './model.json') {
+    fs.writeFileSync(path, JSON.stringify(this._config));
+  }
+
+  loadModel(path = './model.json') {
+    const data = fs.readFileSync(path, 'utf8');
+    const json = JSON.parse(data);
+    this.X = json.input;
+    this.Y = json.output;
   }
 
   product(x = [], y = []) {
