@@ -87,7 +87,7 @@ module.exports = class MultivariateRegression {
     let regressions = [];
 
     for (let i = 0; i < p.length; i++) {
-      const temp = Number(this.results(this.X, this.Y, p[i]));
+      const temp = +this.results(this.X, this.Y, p[i]);
       regressions.push(temp);
     }
     return regressions;
