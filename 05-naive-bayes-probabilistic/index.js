@@ -140,5 +140,23 @@ function naiveBayes(_input = '') {
 function train(_inputs = [], _classes = []) {
   inputs = _inputs;
   classes = _classes;
-
 }
+
+function predict(selInput = '') {
+  const classNames = returnClasses();
+  let probabilities = [];
+
+  if (selInput.toString().trim().length > 0) {
+    const naive = naiveBayes(selInput);
+
+    for (let i = 0; i < classNames.length; i++) {
+      const percentage = +parseFloat(String(naive[classNames[i]] * 100)).toFixed(2);
+      probabilities.push({ class: classNames[i], probability: percentage });
+    }
+  } else {
+    probabilities.push({ class: '', probability: 0 });
+  }
+
+  return probabilities;
+}
+
