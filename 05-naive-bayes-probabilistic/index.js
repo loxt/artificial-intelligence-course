@@ -160,3 +160,7 @@ function predict(selInput = '') {
   return probabilities;
 }
 
+train(['bom', 'mau', 'indiferente', 'indiferente'],
+  ['positivo', 'negativo', 'positivo', 'negativo']);
+
+console.log(predict('bom'));
